@@ -1,0 +1,41 @@
+<svg version="1.1"
+     baseProfile="full"
+     width="450" height="750"
+     xmlns="http://www.w3.org/2000/svg">
+
+	<rect
+		x="0"
+		y="0"
+		width="450"
+		height="750"
+		fill="#ff9500"/>
+
+	<g id="b" fill-opacity="1" transform="translate(375 0) scale(-1 1)">
+		<path 
+			d="M -40,200
+				l 150,0
+				l 0,500
+				l -100,0
+				l 0,-25
+				l 25,0
+				l 0,-425
+				l -25,0
+				z"
+			fill="#ffffff"/>
+
+
+		<circle
+			cx="185"
+			cy="550"
+			r="150"
+			fill="#ffffff"/>
+
+
+		<circle
+			cx="185"
+			cy="550"
+			r="100"
+			fill="#ff9500"/>
+	</g>
+
+</svg>
