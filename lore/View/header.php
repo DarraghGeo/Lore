@@ -6,6 +6,9 @@
 </head>
 <body>
 	<header id="masthead">
+        <h1>Lore</h1>
+<!--
 		<a href=""><img src="/media/dar-logo2.svg"/></a>
+-->
 	</header>
 

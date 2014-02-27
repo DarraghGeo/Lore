@@ -1,26 +1,47 @@
-<?php
+<?php if ( ! defined("BASE_PATH")) die("No direct access.");
 
-include(SYS_PATH . 'Controller/LORE_Controller.php');
+/**
+ * login.php
+ * 
+ * Provide simple login functionality if required.
+ *
+ * @package     Lore Web Publishing Software 
+ * @author      Darragh Geoghegan <darragh.geo@gmail.com>
+ */
 
-class Login extends LORE_Controller
+
+class Login 
 {
 
-    public function __construct($config, $loader)
+    private $register;
+
+
+    /**
+     * @access  public
+     * @param   register    Register containing various objects
+     * @return  null
+     */
+    public function __construct($register)
     {
 
-        parent::__construct($config, $loader);
+        $this->register = $register;
 
         $this->login();
 
     }
 
+
+    /**
+     * @access  public
+     * @return  bool
+     */
     public function login()
     {
 
         $values["placeholder"] = "Password";
 
         //  If we don't need a password.
-        if ($this->config["protected"] === FALSE)
+        if ($this->register->config["protected"] === FALSE)
         {
             return TRUE;
         }
@@ -37,7 +58,7 @@ class Login extends LORE_Controller
         if (isset($_POST["password"]))  
         {
             // If we're successful.
-            if (md5($_POST["password"]) === $this->config["password"])
+            if (md5($_POST["password"]) === $this->register->config["password"])
             {
                 $_SESSION["timestamp"] = time();
 
@@ -50,7 +71,7 @@ class Login extends LORE_Controller
         }
 
 
-        $this->add_buffer('login.php', $values);
+        $this->register->load->view("login.php");
     }
 
 }

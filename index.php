@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * index.php
+ * 
+ * Entry and Bootstrapping file for the application.
+ *
+ * @package     Lore Web Publishing Software 
+ * @author      Darragh Geoghegan <darragh.geo@gmail.com>
+ * @license     http://www.php.net/license/3_01.txt  PHP License 3.01
+ * @version     0.1.0
+ */
+
+
 
 // Set base path
 define("BASE_PATH", "/Users/Darragh/Documents/Websites/");
@@ -27,21 +39,21 @@ $loader = loader::getInstance();
 
 // Initiate the Register and add Loader and Config
 $loader->library('register.php');
-$R = register::getInstance();
+$register = register::getInstance();
 
-$R->load = $loader;
+$register->load = $loader;
 
 // Include configuration files
 require(SYS_PATH . "config.php");
-$R->config = $config;
+$register->config = $config;
 
 
-if ($R->config["cache"])
+if ($register->config["cache"])
 {
     $loader->library('cache.php');
-    $cache = new Cache($R->config["cache_expiry"]);
+    $cache = new Cache($register->config["cache_expiry"]);
 
-    $R->cache = $cache;
+    $register->cache = $cache;
 }
 
 
@@ -55,14 +67,14 @@ session_start();
 
 if ($config["protected"] !== TRUE || isset($_SESSION["timestamp"]))
 {
-    $R->load->controller("page.php");
+    $register->load->controller("page.php");
 
-    $page = new Page($_SERVER["REQUEST_URI"], $R);
+    $page = new Page($_SERVER["REQUEST_URI"], $register);
 }
 
 if ($config["protected"] === TRUE && !isset($_SESSION["timestamp"]))
 {
-    $R->load->controller("login.php");
+    $register->load->controller("login.php");
 
-    $page = new login($config, $loader);
+    $page = new login($register);
 }

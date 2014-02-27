@@ -1,4 +1,13 @@
-<?php
+<?php if ( ! defined("BASE_PATH")) die("No direct access.");
+
+/**
+ * config.php
+ *
+ * Configuration file to make customise application
+ *
+ * @package     Lore Web Publishing Software
+ * @author      Darragh Geoghegan <darragh.geo@gmail.com>
+ */
 
 // Password protect the website
 $config["protected"] = TRUE;
