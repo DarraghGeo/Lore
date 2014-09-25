@@ -1,4 +1,4 @@
-<?php if ( ! defined("BASE_PATH")) die("No direct access.");
+<?php
 
 /**
  * cache.php
@@ -8,6 +8,8 @@
  * @package     Lore Web Publishing Software
  * @author      Darragh Geoghegan <darragh.geo@gmail.com>
  */
+
+namespace Lore\Library;
 
 class Cache
 {
@@ -32,17 +34,14 @@ class Cache
      */
     public function get($title)
     {
-        $title = md5($title);
+        if ($this->isCached($title) && $this->isCurrent($title)) {
+                $contents = file_get_contents(CACHE_PATH . md5($title));
+                if ($contents == true) {
+                    return $contents;
+                }
+        }
 
-        if (file_exists(CACHE_PATH . $title))
-        {
-            if (((time() - filemtime(CACHE_PATH . $title)) / 60) < $this->expiry)
-            {
-                return file_get_contents(CACHE_PATH . $title);
-            }
-        } 
-
-        return FALSE;
+        return false;
     }
 
 
@@ -58,6 +57,21 @@ class Cache
         $content = preg_replace('~>\s+<~', '><', $content);
 
         return file_put_contents(CACHE_PATH . $title, $content);
+    }
+
+    public function isCached($title)
+    {
+        return file_exists(CACHE_PATH . md5($title));
+    }
+
+    public function isCurrent($title)
+    {
+        $modifiedMinutesAgo = (time() - filemtime(CACHE_PATH . md5($title))) / 60;
+        if ($modifiedMinutesAgo < $this->expiry) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

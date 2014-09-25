@@ -7,8 +7,13 @@
 <body>
 	<header id="masthead">
         <h1>Lore</h1>
-<!--
-		<a href=""><img src="/media/dar-logo2.svg"/></a>
--->
 	</header>
+    <article>
+        <h1>Nothing Found.</h1>
+    </article>
+	<footer>
+        <p>Powered by <span class='lore'>LORE</span>.</p>
+	</footer>
+</body>
+</html>
 

@@ -47,22 +47,22 @@ article{
 	}
 
 	article h2{
-		margin: 0px;
-		padding: 0px;
-		font-weight: normal;
-		font-size: .8em;
-		font-family: Georgia;
-		letter-spacing: .1em;
-		color: #c0c0c0;
-	}
-
-	article h3{
 		margin: 0em 0em -.5em 0em;
 		padding: 0em;
 		font-size: 1.5em;
 		letter-spacing: .1em;
+		font-family: Helvetica;
+		color: #303030;
+	}
+
+	article h2 em{
+		margin: -.5em 0em;
+		padding: 0em;
+		font-weight: normal;
+		font-size: .6em;
 		font-family: Georgia;
-		color: #808080;
+		letter-spacing: .1em;
+		color: #c0c0c0;
 	}
 
 	article img{
@@ -129,11 +129,13 @@ article{
 	}
 
 	article p a{
+        padding: 0em .3em;
 		text-decoration: none;
-		color: #ff9500;
+        background-color: #e0e0e0;
+        color: #808080;
 	}
 	article p a:hover{
-		text-decoration: underline;
+        color: #000000;
 	}
 
 footer{

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * index.php
  * 
@@ -29,32 +28,34 @@ define("CONT_PATH", SYS_PATH . "Content/");
 define("CACHE_PATH", SYS_PATH . "Cache/");
 
 
-/******************************************/
+/******************************************
 
 
 // Initiate Loader
 require(SYS_PATH . "Library/loader.php");
-$loader = loader::getInstance();
+$loader = \Lore\Library\Loader::getInstance();
 
 
 // Initiate the Register and add Loader and Config
 $loader->library('register.php');
-$register = register::getInstance();
-
+$register = \Lore\Library\Register::getInstance();
 $register->load = $loader;
 
 // Include configuration files
-require(SYS_PATH . "config.php");
+require(SYS_PATH . "Config/config.php");
 $register->config = $config;
 
-
-if ($register->config["cache"])
-{
+if ($register->config["cache"] === true) {
     $loader->library('cache.php');
-    $cache = new Cache($register->config["cache_expiry"]);
-
+    $cache = new \Lore\Library\Cache($register->config["cache_expiry"]);
     $register->cache = $cache;
 }
+
+$loader->thirdParty("Parsedown.php");
+$register->parser = new \Parsedown;
+
+$loader->model("cabinet.php");
+$register->model = new \Lore\Model\Cabinet($register->config["extension"]);
 
 
 
@@ -62,19 +63,10 @@ if ($register->config["cache"])
 
 
 // Begin...
-session_start();
+require(SYS_PATH . "Library/loader.php");
+$loader = \Lore\Library\Loader::getInstance();
+$loader->controller("boot.php");
 
+require(SYS_PATH . "Config/config.php");
 
-if ($config["protected"] !== TRUE || isset($_SESSION["timestamp"]))
-{
-    $register->load->controller("page.php");
-
-    $page = new Page($_SERVER["REQUEST_URI"], $register);
-}
-
-if ($config["protected"] === TRUE && !isset($_SESSION["timestamp"]))
-{
-    $register->load->controller("login.php");
-
-    $page = new login($register);
-}
+$boot = new \Lore\Controller\Boot($_SERVER["REQUEST_URI"], $loader, $config);

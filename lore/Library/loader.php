@@ -1,5 +1,4 @@
-<?php if ( ! defined("BASE_PATH")) die("No direct access.");
-
+<?php 
 /**
  * loader.php
  *
@@ -9,6 +8,8 @@
  * @author      Darragh Geoghegan <darragh.geo@gmail.com>
  *
  */
+
+namespace Lore\Library;
 
 class Loader
 {
@@ -22,9 +23,7 @@ class Loader
      */
     private function __construct()
     {
-
     }
-
 
     /**
      * @access  public  Returns instance of singleton
@@ -33,9 +32,7 @@ class Loader
     public static function getInstance()
     {
         if (!self::$instance) {
-
                 self::$instance = new self();
-
         }
 
         return self::$instance;
@@ -49,14 +46,13 @@ class Loader
      */
     private function load($v = NULL)
     {
-        if (file_exists($this->file))
-        {
-            require($this->file);
+        if (file_exists($this->file)) {
+            include($this->file);
 
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
 
@@ -91,7 +87,7 @@ class Loader
      * @param   name    Name of the file to be included
      * @return  bool
      */
-    public function thirdparty($name)
+    public function thirdParty($name)
     {
         $this->file = SYS_PATH . "ThirdParty/" . $name;
 

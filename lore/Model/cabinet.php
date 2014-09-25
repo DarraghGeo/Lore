@@ -1,7 +1,6 @@
-<?php if ( ! defined("BASE_PATH")) die("No direct access.");
-
+<?php
 /**
- * model.php
+ * cabinet.php
  *
  * Retrieves requested files
  *
@@ -9,12 +8,12 @@
  * @author      Darragh Geoghegan <darragh.geo@gmail.com>
  */
 
+namespace Lore\Model;
 
-class Model
+class Cabinet
 {
 
     private $extension;
-
 
     /*
      * @access  public
@@ -38,33 +37,27 @@ class Model
     public function get($path, $max, $offset)
     {
         $contents = array();
-
         $path = CONT_PATH . $path;
-
-        if (is_dir($path))
-        {
+        if (is_dir($path)) {
             $i = 0;
             $directory = opendir($path);
 
             substr($path, -1) === "/" || $path .= "/";
 
-            while (($file = readdir($directory)) !== false)
-            {
-                if (filetype($path . $file) === 'file' && substr($file,strlen($this->extension) * -1) === $this->extension)        
-                {
-                    if ($max > 0 && $i >= $offset)
-                    {
-                        $contents[] = file_get_contents($path . $file);
-
-                        $max--;
-                    }
+            while (($file = readdir($directory)) !== false) {
+                if ((filetype($path . $file) === 'file')
+                   && (substr($file,strlen($this->extension) * -1) === $this->extension)
+                   && ($max > 0) 
+                   && ($i >= $offset)
+                ) {
+                    $contents[] = file_get_contents($path . $file);
+                    $max--;
                     $i++;
                 }
             }
             closedir($directory);
         }
-        else if (is_file($path . "." . $this->extension))
-        {
+        elseif (is_file($path . "." . $this->extension) === true) {
             $contents[] = file_get_contents($path . "." . $this->extension);
         }
 
