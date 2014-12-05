@@ -1,0 +1,155 @@
+body{
+	margin: -1em 0em 0em 0em;
+	padding: 0em;
+	background-color: #ffffff;
+}
+
+header#masthead{
+	position: fixed;
+	top: 0em;
+	left: 0em;
+	width: 25%;
+}
+
+	header#masthead img{
+		margin: 2em 25%;
+		width: 50%;
+	}
+
+    header#masthead h1{
+        opacity: .5;
+        margin: .5em auto;
+        font-size: 5em;
+        text-align: center;
+        font-family: Helvetica;
+        text-transform: uppercase;
+    }
+
+	
+
+article{
+	position: relative;
+	margin: 1em 0em;
+	padding: 1em 0em 2em 0em;
+	top: 0px;
+	left: 25%;
+	width: 50%;
+	border-bottom: 1px solid #808080;
+}
+
+	article  h1{
+		margin: 0px;
+		padding: 0em 0em;
+		font-weight: normal;
+		font-size: 2.5em;
+		font-family: Georgia;
+		color: #202020;
+	}
+
+	article h2{
+		margin: 0em 0em -.5em 0em;
+		padding: 0em;
+		font-size: 1.5em;
+		letter-spacing: .1em;
+		font-family: Helvetica;
+		color: #303030;
+	}
+
+	article h2 em{
+		margin: -.5em 0em;
+		padding: 0em;
+		font-weight: normal;
+		font-size: .6em;
+		font-family: Georgia;
+		letter-spacing: .1em;
+		color: #c0c0c0;
+	}
+
+	article img{
+		width: 100%;
+	}
+
+	article ul,
+	article ol{
+		margin: 1.5em .5em;
+		line-height: 1.5em;
+	}
+
+	article p,
+	article ul li,
+	article ol li{
+		font-size: .9em;
+		font-family: Helvetica;
+		line-height: 1.5em;
+		color: #202020;
+	}
+
+    article p.notice{
+        font-size: 3em;
+        text-align: center;
+    }
+
+	article blockquote,
+	article p q{
+		font-family: Georgia;
+		font-style: italic;
+	}
+
+	article blockquote{
+		padding: .5em;
+		letter-spacing: .1em;
+		line-height: 1.5em;
+		font-size: .9em;
+		color: #606060;
+	}
+
+	article blockquote:before{
+		position: absolute;
+		margin-top: .25em;
+		margin-left: -.5em;
+		font-size: 5em;
+		color: #e0e0e0;
+		content: "\201C";
+	}
+
+	article blockquote:after{
+		position: absolute;
+		margin-top: -.2em;
+		right: .2em;
+		font-size: 5em;
+		color: #e0e0e0;
+		content: "\201D";
+	}
+
+	article pre{
+		padding: .5em;
+		line-height: 1.5em;
+		border-top: 1px solid #e0e0e0;
+		border-bottom: 1px solid #e0e0e0;
+	}
+
+	article p a{
+        padding: 0em .3em;
+		text-decoration: none;
+        background-color: #e0e0e0;
+        color: #808080;
+	}
+	article p a:hover{
+        color: #000000;
+	}
+
+footer{
+	position: relative;
+	bottom: 0px;
+	width: 100%;
+}
+
+    footer p{
+        text-align: center;
+    }
+
+        footer p span.lore
+        {
+            font-family: Helvetica;
+            font-weight: bold;
+        }
