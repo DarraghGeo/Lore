@@ -18,10 +18,10 @@ define("BASE_PATH", "/Users/Darragh/Documents/Websites/Lore/");
 define("ROOT_PATH", BASE_PATH . "www/");
 
 // Set path to system files
-define("SYS_PATH", ROOT_PATH . "lore/");
+define("SYS_PATH", BASE_PATH . "lore/");
 
 // Set path to contents folder
-define("CONT_PATH", SYS_PATH . "Content/");
+define("CONT_PATH", BASE_PATH . "Content/");
 
 // Set path to cache folder
 define("CACHE_PATH", SYS_PATH . "Cache/");
