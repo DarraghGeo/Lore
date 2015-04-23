@@ -27,39 +27,6 @@ define("CONT_PATH", BASE_PATH . "Content/");
 define("CACHE_PATH", SYS_PATH . "Cache/");
 
 
-/******************************************
-
-
-// Initiate Loader
-require(SYS_PATH . "Library/loader.php");
-$loader = \Lore\Library\Loader::getInstance();
-
-
-// Initiate the Register and add Loader and Config
-$loader->library('register.php');
-$register = \Lore\Library\Register::getInstance();
-$register->load = $loader;
-
-// Include configuration files
-require(SYS_PATH . "Config/config.php");
-$register->config = $config;
-
-if ($register->config["cache"] === true) {
-    $loader->library('cache.php');
-    $cache = new \Lore\Library\Cache($register->config["cache_expiry"]);
-    $register->cache = $cache;
-}
-
-$loader->thirdParty("Parsedown.php");
-$register->parser = new \Parsedown;
-
-$loader->model("cabinet.php");
-$register->model = new \Lore\Model\Cabinet($register->config["extension"]);
-
-
-
-/******************************************/
-
 
 // Begin...
 require(SYS_PATH . "Library/loader.php");
