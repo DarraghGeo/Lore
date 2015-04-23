@@ -6,7 +6,6 @@
  *
  * @package     Lore Web Publishing Software 
  * @author      Darragh Geoghegan <darragh.geo@gmail.com>
- * @license     http://www.php.net/license/3_01.txt  PHP License 3.01
  * @version     0.1.0
  */
 
