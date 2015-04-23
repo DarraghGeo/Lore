@@ -1,7 +1,7 @@
 lore/Cache/*
 
 Content/*
-!Content/.readme.md
+!Content/readme.md
 
 *.swo
 
